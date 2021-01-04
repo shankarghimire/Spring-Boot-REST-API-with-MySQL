@@ -2,19 +2,32 @@ package com.examples.helper;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileUploadHelper {
-	//Static File Path
-	public final String UPLOAD_DIR="E:\\Sheridan\\Java-Practice\\Spring-Boot-REST-API-with-MySQL\\src\\main\\resources\\static\\documents";
 	
+	//For StaticStatic File Path
+	//public final String UPLOAD_DIR="E:\\Sheridan\\Java-Practice\\Spring-Boot-REST-API-with-MySQL\\src\\main\\resources\\static\\documents";
+	
+	//For Dynamic File Path
+	public final String UPLOAD_DIR = new ClassPathResource("static/documents/").getFile().getAbsolutePath();
+	
+	
+	public FileUploadHelper() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public boolean uploadFile(MultipartFile file) {
 		boolean status = false;
 		try {
