@@ -30,6 +30,7 @@ public class Author {
 	@OneToOne(mappedBy = "author")
 	@JsonBackReference
 	private Book book;
+	
 	public Author() {
 		super();
 		// TODO Auto-generated constructor stub
